@@ -2,69 +2,40 @@ package UI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
 
     private Tamagotchi tamagotchi;
-    private JButton feedButton, sleepButton, playButton, howAreYouButton;
+    private static JTextField textField = new JTextField();
 
-    public Menu(Tamagotchi tamagochi) {
-        this.tamagotchi = tamagochi;
+    public Menu(Tamagotchi tamagotchi) {
+        this.tamagotchi = tamagotchi;
     }
 
     public void init() {
+        JFrame frame = new JFrame("Tamagotchi");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel context = new JPanel();
+        context.setLayout(new BoxLayout(context, BoxLayout.Y_AXIS));
+        frame.getContentPane().add(context);
+        JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        context.add(textField);
+        context.add(buttons);
 
-        // Crear botones
-        feedButton = new JButton("Alimentar");
-        sleepButton = new JButton("Dormir");
-        playButton = new JButton("Jugar");
-        howAreYouButton = new JButton("¿Cómo estás?");
-
-        // Añadir listeners a los botones
-        feedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tamagotchi.feed();
-            }
-        });
-
-        sleepButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tamagotchi.sleep();
-            }
-        });
-
-        playButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tamagotchi.play();
-            }
-        });
-
-        howAreYouButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tamagotchi.howAreYou();
-            }
-        });
-
-        // Añadir botones al panel
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 1));
-        panel.add(feedButton);
-        panel.add(sleepButton);
-        panel.add(playButton);
-        panel.add(howAreYouButton);
-
-        // Configurar el marco
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(panel);
-        this.pack();
-        this.setVisible(true);
-
+        JButton feedButton = new JButton("Alimentar");
+        feedButton.addActionListener(e -> textField.setText(tamagotchi.getState().feed()));
+        JButton sleepButton = new JButton("Dormir");
+        sleepButton.addActionListener(e -> textField.setText(tamagotchi.getState().sleep()));
+        JButton playButton = new JButton("Jugar");
+        playButton.addActionListener(e -> textField.setText(tamagotchi.getState().play()));
+        JButton howAreYouButton = new JButton("¿Cómo estás?");
+        howAreYouButton.addActionListener(e -> textField.setText(tamagotchi.getState().howAreYou()));
+        frame.setVisible(true);
+        frame.setSize(400, 100);
+        buttons.add(feedButton);
+        buttons.add(sleepButton);
+        buttons.add(playButton);
+        buttons.add(howAreYouButton);
     }
 
 }

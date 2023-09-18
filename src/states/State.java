@@ -10,12 +10,12 @@ public abstract class State {
         this.tamagotchi = tamagotchi;
     }
 
-    public abstract void play();
+    public abstract String play();
 
-    public abstract void feed();
+    public abstract String feed();
 
-    public abstract void sleep();
+    public abstract String sleep();
 
-    public abstract void howAreYou();
+    public abstract String howAreYou();
 
 }

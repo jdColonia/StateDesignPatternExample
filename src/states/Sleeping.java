@@ -12,28 +12,30 @@ public class Sleeping extends State {
     }
 
     @Override
-    public void play() {
+    public String play() {
+        return "";
     }
 
     @Override
-    public void feed() {
+    public String feed() {
+        return "";
     }
 
     @Override
-    public void sleep() {
+    public String sleep() {
+        return "";
     }
 
     @Override
-    public void howAreYou() {
-        System.out.println("Está durmiendo!!!");
-
+    public String howAreYou() {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 Sleeping.this.tamagotchi.changeState(new Hungry(tamagotchi));
             }
-        }, 7000);
+        }, 3000);
+        return "Está durmiendo!!!";
     }
 
 }

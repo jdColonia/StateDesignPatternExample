@@ -9,24 +9,24 @@ public class Tired extends State {
     }
 
     @Override
-    public void play() {
-        System.out.println("No quiero jugar!");
+    public String play() {
+        return "No quiero jugar!";
     }
 
     @Override
-    public void feed() {
-        System.out.println("No quiero comer!");
+    public String feed() {
+        return "No quiero comer!";
     }
 
     @Override
-    public void sleep() {
-        System.out.println("Buenas noches!!!");
+    public String sleep() {
         tamagotchi.changeState(new Sleeping(tamagotchi));
+        return "Buenas noches!!!";
     }
 
     @Override
-    public void howAreYou() {
-        System.out.println("Tengo sueño!");
+    public String howAreYou() {
+        return "Tengo sueño!";
     }
 
 }

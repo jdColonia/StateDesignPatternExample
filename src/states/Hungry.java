@@ -9,24 +9,24 @@ public class Hungry extends State {
     }
 
     @Override
-    public void play() {
-        System.out.println("No quiero jugar!");
+    public String play() {
+        return "No quiero jugar!";
     }
 
     @Override
-    public void feed() {
-        System.out.println("Ñam ñan nañ!!!");
+    public String feed() {
         tamagotchi.changeState(new Bored(tamagotchi));
+        return "Ñam ñan nañ!!!";
     }
 
     @Override
-    public void sleep() {
-        System.out.println("No quiero dormir!");
+    public String sleep() {
+        return "No quiero dormir!";
     }
 
     @Override
-    public void howAreYou() {
-        System.out.println("Dame de comer. Tengo hambre!");
+    public String howAreYou() {
+        return "Dame de comer. Tengo hambre!";
     }
 
 }
