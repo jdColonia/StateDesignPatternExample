@@ -5,10 +5,12 @@ import UI.Tamagotchi;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Sleeping extends State {
+public class Sleeping implements State {
 
-    public Sleeping(Tamagotchi tamagotchi) {
-        super(tamagotchi);
+    private Tamagotchi tamagotchi;
+
+    public Sleeping() {
+
     }
 
     @Override
@@ -32,10 +34,15 @@ public class Sleeping extends State {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Sleeping.this.tamagotchi.changeState(new Hungry(tamagotchi));
+                Sleeping.this.tamagotchi.changeState(new Hungry());
             }
         }, 3000);
         return "Está durmiendo!!!";
+    }
+
+    @Override
+    public void setTamagotchi(Tamagotchi tamagotchi) {
+        this.tamagotchi = tamagotchi;
     }
 
 }

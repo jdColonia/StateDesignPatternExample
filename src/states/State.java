@@ -2,13 +2,7 @@ package states;
 
 import UI.Tamagotchi;
 
-public abstract class State {
-
-    Tamagotchi tamagotchi;
-
-    State(Tamagotchi tamagotchi) {
-        this.tamagotchi = tamagotchi;
-    }
+public interface State {
 
     public abstract String play();
 
@@ -17,5 +11,7 @@ public abstract class State {
     public abstract String sleep();
 
     public abstract String howAreYou();
+
+    public void setTamagotchi(Tamagotchi tamagotchi);
 
 }

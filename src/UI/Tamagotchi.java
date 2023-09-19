@@ -8,31 +8,16 @@ public class Tamagotchi {
     private State state;
 
     public Tamagotchi() {
-        this.state = new Bored(this);
+        changeState(new Bored());
     }
 
     public void changeState(State estado) {
         this.state = estado;
+        this.state.setTamagotchi(this);
     }
 
     public State getState() {
         return state;
-    }
-
-    public void feed() {
-        this.state.feed();
-    }
-
-    public void sleep() {
-        this.state.sleep();
-    }
-
-    public void play() {
-        this.state.play();
-    }
-
-    public void howAreYou() {
-        this.state.howAreYou();
     }
 
 }

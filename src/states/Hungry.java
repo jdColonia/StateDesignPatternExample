@@ -2,10 +2,12 @@ package states;
 
 import UI.Tamagotchi;
 
-public class Hungry extends State {
+public class Hungry implements State {
 
-    public Hungry(Tamagotchi tamagotchi) {
-        super(tamagotchi);
+    private Tamagotchi tamagotchi;
+
+    public Hungry() {
+
     }
 
     @Override
@@ -15,7 +17,7 @@ public class Hungry extends State {
 
     @Override
     public String feed() {
-        tamagotchi.changeState(new Bored(tamagotchi));
+        tamagotchi.changeState(new Bored());
         return "Ñam ñan nañ!!!";
     }
 
@@ -27,6 +29,11 @@ public class Hungry extends State {
     @Override
     public String howAreYou() {
         return "Dame de comer. Tengo hambre!";
+    }
+
+    @Override
+    public void setTamagotchi(Tamagotchi tamagotchi) {
+        this.tamagotchi = tamagotchi;
     }
 
 }

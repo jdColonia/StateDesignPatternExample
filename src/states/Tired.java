@@ -2,10 +2,12 @@ package states;
 
 import UI.Tamagotchi;
 
-public class Tired extends State {
+public class Tired implements State {
 
-    public Tired(Tamagotchi tamagotchi) {
-        super(tamagotchi);
+    private Tamagotchi tamagotchi;
+
+    public Tired() {
+
     }
 
     @Override
@@ -20,13 +22,18 @@ public class Tired extends State {
 
     @Override
     public String sleep() {
-        tamagotchi.changeState(new Sleeping(tamagotchi));
+        tamagotchi.changeState(new Sleeping());
         return "Buenas noches!!!";
     }
 
     @Override
     public String howAreYou() {
         return "Tengo sueño!";
+    }
+
+    @Override
+    public void setTamagotchi(Tamagotchi tamagotchi) {
+        this.tamagotchi = tamagotchi;
     }
 
 }
